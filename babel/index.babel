@@ -1,0 +1,13 @@
+function getDatamuse() {
+  var textareaInput = $("#forDatamuse").val();
+  var linkDatamuse = "https://api.datamuse.com/words?rel_rhy=" + textareaInput + "&max=25";
+  $.getJSON(linkDatamuse, function (data) {
+    data.forEach(function(element){
+      $( "#displayArea" ).append( element.word + "</br>" );
+    })
+  });
+}
+
+$("#datamuseTextareaButton").on("click", function() {
+  getDatamuse();
+})
